@@ -1,1 +1,33 @@
+Naive Bayes Classification with Categorical Features
+This project implements a Naive Bayes classifier to predict a target variable (Play) based on several categorical input features. The features in this example include weather-related attributes 
+such as Outlook, Temperature, Humidity, and Windy. The model is trained on a dataset and uses the Categorical Naive Bayes algorithm (CategoricalNB) to make predictions.
+
+Dependencies
+This project uses the following libraries:
+
+pandas - for data manipulation and loading the dataset.
+sklearn - for the machine learning model and encoding tools.
+openpyxl - for reading Excel files with pandas.
+
+How It Works
+The goal of the model is to predict whether someone will play based on various weather conditions. The model uses Categorical Naive Bayes which is a variation of Naive Bayes specifically for categorical data.
+
+Steps in the Process:
+Data Loading: The dataset is loaded from an Excel file (NaviesBayes_DF.xlsx) using pandas. It contains multiple weather-related features and a target variable Play which is the label to predict.
+Data Preprocessing: The feature columns (Outlook, Temperature, Humidity, Windy) are categorical. These need to be encoded numerically before training the model. 
+                    We use OrdinalEncoder from sklearn to safely encode these features into numeric values.
+                    The target column Play is also categorical, with values like Yes or No. We use LabelEncoder to encode this target variable.
+
+Model Training: The encoded features and target variable are then used to train the Categorical Naive Bayes model (CategoricalNB), which is specifically designed for categorical input data.
+Prediction: The model can predict whether someone will play based on new weather conditions by applying the same encoding process to the input data and using the trained model to make the prediction.
+
+Understanding the Code
+1. Data Preprocessing:
+We use OrdinalEncoder for the feature columns (Outlook, Temperature, Humidity, Windy) to convert categorical values into numerical representations that the model can work with. LabelEncoder is used for the target variable (Play), converting the labels (Yes, No) into numerical values (0 and 1).
+
+2. Training the Model:
+We use Categorical Naive Bayes (CategoricalNB), a variant of Naive Bayes that works well for categorical features. It calculates the probability of the target variable given the feature values and predicts the most likely outcome.
+
+3. Making Predictions:
+When a new instance is provided, the same transformations (encoding) are applied to the test data using the same fitted ColumnTransformer. The model then predicts the target variable (Play) for the new instance.
 
