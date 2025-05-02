@@ -31,3 +31,8 @@ We use Categorical Naive Bayes (CategoricalNB), a variant of Naive Bayes that wo
 3. Making Predictions:
 When a new instance is provided, the same transformations (encoding) are applied to the test data using the same fitted ColumnTransformer. The model then predicts the target variable (Play) for the new instance.
 
+
+
+Also included index.html and server.py using Flask Server which allows the user to upload the resp excel file and predict the answer
+Also the user can enter the test instances on html page
+
