@@ -14,11 +14,9 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # 1. Load uploaded Excel file
     file = request.files['excel']
     df = pd.read_excel(file)
 
-    # 2. Preprocess data
     X = df[['Outlook', 'Temperature', 'Humidity', 'Windy']]
     y = df['Play']
 
@@ -32,11 +30,9 @@ def predict():
     le = LabelEncoder()
     y_encoded = le.fit_transform(y)
 
-    # 3. Train model
     model = CategoricalNB()
     model.fit(X_encoded, y_encoded)
 
-    # 4. Collect test input
     test_instance = pd.DataFrame([{
         'Outlook': request.form['Outlook'],
         'Temperature': request.form['Temperature'],
@@ -44,7 +40,6 @@ def predict():
         'Windy': request.form['Windy'] == 'True'
     }])
 
-    # 5. Encode test instance and predict
     test_encoded = column_transformer.transform(test_instance)
     pred_encoded = model.predict(test_encoded)
     prediction = le.inverse_transform(pred_encoded)[0]
